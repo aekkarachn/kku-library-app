@@ -11,7 +11,7 @@ const startServer = async () => {
             console.log(`🚀 Server is running in ${env.nodeEnv} mode on http://localhost:${env.port}`);
             console.log(`🔗 Health check: http://localhost:${env.port}/health`);
             console.log(`📚 Books API: http://localhost:${env.port}/api/books`);
-            console.log(`API listening on http://localhost:${env.port}`);
+            console.log(`⚡ API listening on http://localhost:${env.port}`);
         });
     } catch (err) {
         console.error('Failed to start server:', err);

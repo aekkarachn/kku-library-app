@@ -14,11 +14,11 @@ class BooksRepository {
 
     async create(book) {
         const query = `
-            INSERT INTO ${env.dbSchema}.books (title, author, price) 
-            VALUES ($1, $2, $3) 
+            INSERT INTO ${env.dbSchema}.books (isbn, title, author, category) 
+            VALUES ($1, $2, $3, $4) 
             RETURNING *
         `;
-        const values = [book.title, book.author, book.price];
+        const values = [book.isbn, book.title, book.author, book.category];
         const result = await db.query(query, values);
         return result.rows[0];
     }
@@ -26,11 +26,11 @@ class BooksRepository {
     async update(id, book) {
         const query = `
             UPDATE ${env.dbSchema}.books 
-            SET title = $1, author = $2, price = $3, updated_at = CURRENT_TIMESTAMP
-            WHERE id = $4
+            SET isbn = $1, title = $2, author = $3, category = $4
+            WHERE id = $5
             RETURNING *
         `;
-        const values = [book.title, book.author, book.price, id];
+        const values = [book.isbn, book.title, book.author, book.category, id];
         const result = await db.query(query, values);
         return result.rows[0];
     }

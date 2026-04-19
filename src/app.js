@@ -4,6 +4,8 @@ const booksRoutes = require('./routes/books.routes');
 const usersRouter = require('./routes/users.routes');
 const authRouter = require('./routes/auth.routes');
 const meRouter = require('./routes/me.routes');
+const borrowsRouter = require('./routes/borrows.routes');
+const returnsRouter = require('./routes/returns.routes');
 
 const logger = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
@@ -20,6 +22,8 @@ app.use('/api/books', booksRoutes);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/me', meRouter);
+app.use('/borrows', borrowsRouter);
+app.use('/returns', returnsRouter);
 
 // 404 Handler (This is a middleware too)
 app.use((req, res) => {
