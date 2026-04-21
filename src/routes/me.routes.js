@@ -10,6 +10,7 @@ router.get('/', authRequired, (req, res) => {
       email: req.user.email,
       name: req.user.name,
       role: req.user.role,
+      status: req.user.status,
     },
   });
 });

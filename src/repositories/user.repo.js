@@ -5,7 +5,7 @@ async function createUser({ email, name, passwordHash }) {
   const sql = `
     INSERT INTO ${env.dbSchema}.users (email, name, password_hash)
     VALUES ($1, $2, $3)
-    RETURNING id, email, name, created_at
+    RETURNING id, email, name, role, status, created_at
   `;
 
   const result = await pool.query(sql, [email, name, passwordHash]);
@@ -14,7 +14,7 @@ async function createUser({ email, name, passwordHash }) {
 
 async function findByEmail(email) {
   const sql = `
-    SELECT id, email, name, password_hash
+    SELECT id, email, name, role, status, password_hash
     FROM ${env.dbSchema}.users
     WHERE email = $1
     LIMIT 1

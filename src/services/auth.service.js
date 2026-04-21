@@ -27,7 +27,8 @@ async function login({ email, password }) {
     sub: String(user.id),
     email: user.email,
     name: user.name,
-    role: 'user',
+    role: user.role,
+    status: user.status,
   });
 
   return { accessToken };
